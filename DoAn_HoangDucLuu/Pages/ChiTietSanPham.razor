@@ -1,0 +1,80 @@
+﻿@page "/chitietsanpham/{productId:int}"
+@inject ApplicationDbContext DbContext
+@inject NavigationManager NavigationManager
+@inject DoAn_HoangDucLuu.Services.CartService CartService
+
+<PageTitle>Chi Tiết Sản Phẩm</PageTitle>
+
+@if (product != null)
+{
+    <div class="container mt-5 product-container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="@product.AnhSP" class="img-fluid rounded product-image" alt="@product.TenSP">
+            </div>
+            <div class="col-md-6 product-info">
+                <h3 class="text-primary">@product.TenSP</h3>
+                <p>@product.MoTa</p>
+                <p class="text-danger product-price">@product.GiaSP.ToString("N0") VND</p>
+                <div class="mb-3">
+                    <label for="size" class="form-label">Kích thước</label>
+                    <select id="size" @bind="selectedSize" class="form-select" style="width: 150px;">
+                        <option value="33">33</option>
+                        <option value="34">34</option>
+                        <option value="35">35</option>
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Số lượng</label>
+                    <input type="number" id="quantity" @bind="quantity" min="1" class="form-control" style="width: 150px;">
+                </div>
+                <div>
+                    <button class="btn btn-success" @onclick="AddToCart">Thêm vào giỏ hàng</button>
+                    <button class="btn btn-primary" @onclick="BuyNow">Mua ngay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <p>Loading...</p>
+}
+
+@code {
+    [Parameter] public int productId { get; set; }
+
+    private SanPham product;
+    private int quantity = 1;
+    private string selectedSize;
+
+    protected override async Task OnInitializedAsync()
+    {
+        product = await DbContext.SanPhams.FindAsync(productId);
+        if (product == null)
+        {
+            NavigationManager.NavigateTo("/sanpham");
+        }
+    }
+
+    private void AddToCart()
+    {
+        var cartItem = new CartItem
+            {
+                Product = product,
+                Quantity = quantity,
+                Size = selectedSize
+            };
+
+        CartService.AddToCart(cartItem);
+    }
+
+    private void BuyNow()
+    {
+        CartService.ClearCart(); // Clear cart to add only the current product
+        AddToCart();
+        NavigationManager.NavigateTo("/checkout");
+    }
+}

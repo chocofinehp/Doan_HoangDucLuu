@@ -1,0 +1,56 @@
+﻿@page "/orderconfirmation/{orderId:int}"
+@inject ApplicationDbContext DbContext
+
+<h3>Xác nhận đơn hàng</h3>
+
+@if (order == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div>
+        <h4>Thông tin khách hàng:</h4>
+        <p>Tên: @order.CustomerName</p>
+        <p>Địa chỉ: @order.Address</p>
+        <p>Email: @order.Email</p>
+        <p>Điện thoại: @order.Phone</p>
+    </div>
+
+    <h4>Chi tiết đơn hàng:</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in order.OrderItems)
+            {
+                <tr>
+                    <td>@item.Product.TenSP</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price.ToString("N0") VND</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h4>Tổng cộng: @order.OrderItems.Sum(i => i.Price * i.Quantity).ToString("N0") VND</h4>
+}
+
+@code {
+    [Parameter]
+    public int orderId { get; set; }
+    private Order order;
+
+    protected override async Task OnInitializedAsync()
+    {
+        order = await DbContext.Orders
+            .Include(o => o.OrderItems)
+            .ThenInclude(oi => oi.Product)
+            .FirstOrDefaultAsync(o => o.OrderId == orderId);
+    }
+}

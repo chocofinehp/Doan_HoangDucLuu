@@ -1,0 +1,58 @@
+﻿@page "/checkout"
+@inject ApplicationDbContext DbContext
+@inject NavigationManager NavigationManager
+@inject DoAn_HoangDucLuu.Services.CartService CartService
+
+<PageTitle>Checkout</PageTitle>
+
+<div class="container">
+    <h3>Thông tin Thanh Toán</h3>
+    <EditForm Model="@order" OnValidSubmit="ProcessCheckout">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label class="form-label">Tên người mua</label>
+            <InputText class="form-control" @bind-Value="order.CustomerName" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Địa chỉ</label>
+            <InputText class="form-control" @bind-Value="order.Address" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <InputText class="form-control" @bind-Value="order.Email" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Số điện thoại</label>
+            <InputText class="form-control" @bind-Value="order.Phone" />
+        </div>
+
+        <button type="submit" class="btn btn-success">Thanh Toán</button>
+    </EditForm>
+</div>
+
+@code {
+    private Order order = new Order();
+
+    private async Task ProcessCheckout()
+    {
+        // Lưu thông tin đơn hàng vào database
+        order.OrderItems = CartService.GetCartItems().Select(cartItem => new OrderItem
+            {
+                ProductId = cartItem.Product.IDSP,
+                Quantity = cartItem.Quantity, // Cập nhật số lượng nếu có
+                Price = cartItem.Product.GiaSP,
+          
+            }).ToList();
+
+        DbContext.Orders.Add(order);
+        await DbContext.SaveChangesAsync();
+
+        // Clear cart
+        CartService.ClearCart();
+
+        // Điều hướng đến trang cảm ơn hoặc trang xác nhận đơn hàng
+        NavigationManager.NavigateTo($"/orderconfirmation/{order.OrderId}");
+    }
+}

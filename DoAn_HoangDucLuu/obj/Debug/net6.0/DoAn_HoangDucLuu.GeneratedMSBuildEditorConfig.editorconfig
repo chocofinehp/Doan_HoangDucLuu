@@ -1,0 +1,108 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = DoAn_HoangDucLuu
+build_property.RootNamespace = DoAn_HoangDucLuu
+build_property.ProjectDir = D:\abc\lập trình web\DoAn_HoangDucLuu\DoAn_HoangDucLuu\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\abc\lập trình web\DoAn_HoangDucLuu\DoAn_HoangDucLuu
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/Cart.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FydC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/Checkout.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hlY2tvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/ChiTietSanPham.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hpVGlldFNhblBoYW0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/Dichvu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGljaHZ1LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/Dieukhoan.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlldWtob2FuLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/Gioithieu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2lvaXRoaWV1LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/Lienhe.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGllbmhlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/Order Detail.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXIgRGV0YWlsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/OrderConfirmation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXJDb25maXJtYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/Outstanding Orders.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3V0c3RhbmRpbmcgT3JkZXJzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/ProcessedOrders.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvY2Vzc2VkT3JkZXJzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/ViewSp.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld1NwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-f5e4vo8kk6
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-a2lu76f4pc
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/abc/lập trình web/DoAn_HoangDucLuu/DoAn_HoangDucLuu/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

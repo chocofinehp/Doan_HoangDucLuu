@@ -1,0 +1,31 @@
+﻿@page "/admin"
+@using DoAn_HoangDucLuu.Models
+@inject ApplicationDbContext _context
+
+<h3>Outstanding Orders</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date Placed</th>
+            <th>Order Id</th>
+            <th>Customer Name</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in _context.Orders.Where(o => !o.IsProcessed))
+        {
+            <tr>
+                <td>@order.OrderDate.ToShortDateString()</td>
+                <td><a href="orderdetail/@order.OrderId">@order.OrderId</a></td>
+                <td>@order.CustomerName</td>
+                <td>@order.Address</td>
+                <td>@order.Email</td>
+                <td>@order.Phone</td>
+            </tr>
+        }
+    </tbody>
+</table>

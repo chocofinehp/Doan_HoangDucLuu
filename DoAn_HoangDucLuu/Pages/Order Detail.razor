@@ -1,0 +1,64 @@
+﻿@page "/orderdetail/{orderId:int}"
+@using DoAn_HoangDucLuu.Models
+@inject ApplicationDbContext _context
+@inject NavigationManager Navigation
+
+@code {
+    [Parameter]
+    public int orderId { get; set; }
+    private Order order;
+
+    protected override async Task OnInitializedAsync()
+    {
+        order = await _context.Orders.Include(o => o.OrderItems).ThenInclude(oi => oi.Product).FirstOrDefaultAsync(o => o.OrderId == orderId);
+    }
+
+    private async Task MarkAsProcessed()
+    {
+        order.IsProcessed = true;
+        await _context.SaveChangesAsync();
+        Navigation.NavigateTo("/admin");
+    }
+}
+
+<h3>Xác nhận đơn hàng</h3>
+
+@if (order != null)
+{
+    <div>
+        <h4>Thông tin khách hàng:</h4>
+        <p>Tên: @order.CustomerName</p>
+        <p>Địa chỉ: @order.Address</p>
+        <p>Email: @order.Email</p>
+        <p>Điện thoại: @order.Phone</p>
+
+        <h4>Chi tiết đơn hàng:</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in order.OrderItems)
+                {
+                    <tr>
+                        <td>@item.Product.TenSP</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Price.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <h4>Tổng cộng: @order.OrderItems.Sum(oi => oi.Price * oi.Quantity).ToString("C")</h4>
+
+        <button class="btn btn-primary" @onclick="MarkAsProcessed">Mark Order as Processed</button>
+    </div>
+}
+else
+{
+    <p>Loading...</p>
+}

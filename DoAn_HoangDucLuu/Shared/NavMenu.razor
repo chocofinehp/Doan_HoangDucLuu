@@ -1,0 +1,65 @@
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">DoAn_HoangDucLuu</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Trang Chủ
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/sanpham">
+                <span class="oi oi-box" aria-hidden="true"></span> Sản Phẩm
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/gioithieu">
+                <span class="oi oi-info" aria-hidden="true"></span> Giới Thiệu
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/dichvu">
+                <span class="oi oi-cog" aria-hidden="true"></span> Dịch Vụ
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/lienhe">
+                <span class="oi oi-phone" aria-hidden="true"></span> Liên Hệ
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/cart">
+                <span class="oi oi-cart" aria-hidden="true"></span> Giỏ Hàng
+            </NavLink>
+        </div>
+        <!-- Thêm các mục Admin -->
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/admin">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Outstanding Orders
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/processedorders">
+                <span class="oi oi-check" aria-hidden="true"></span> Processed Orders
+            </NavLink>
+        </div>
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

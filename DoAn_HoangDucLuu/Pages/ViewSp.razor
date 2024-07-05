@@ -1,0 +1,82 @@
+﻿@page "/sanpham"
+@inject ApplicationDbContext DbContext
+@inject NavigationManager NavigationManager
+@inject DoAn_HoangDucLuu.Services.CartService CartService
+
+<div style="text-align: center;">
+    <h3>Danh sách Sản Phẩm</h3>
+</div>
+
+<div class="search-bar">
+    <input type="text" placeholder="Tìm kiếm sản phẩm..." @bind="searchQuery" @bind:event="oninput" class="form-control search-input" />
+</div>
+
+@if (filteredProducts == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="product-container">
+        @foreach (var sp in filteredProducts)
+        {
+            <div class="product-card">
+                <img src="@sp.AnhSP" alt="@sp.TenSP" class="product-image" @onclick="() => NavigateToDetail(sp.IDSP)" style="cursor: pointer;" />
+                <div class="product-info">
+                    <h4>@sp.TenSP</h4>
+                    <p class="product-price">@sp.GiaSP.ToString("N0") VND</p>
+                    <p>@sp.MoTa</p>
+                    <button @onclick="() => AddToCart(sp)" class="btn btn-primary">Thêm vào giỏ hàng</button>
+                    <button @onclick="() => NavigateToDetail(sp.IDSP)" class="btn btn-success">Mua ngay</button>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    private List<SanPham> sanPhams;
+    private List<SanPham> filteredProducts;
+    private string searchQuery = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        sanPhams = await DbContext.SanPhams.ToListAsync();
+        filteredProducts = sanPhams;
+    }
+
+    private void AddToCart(SanPham product)
+    {
+        var cartItem = new CartItem
+            {
+                Product = product,
+                Quantity = 1, // Hoặc số lượng mặc định khác
+                Size = "M" // Hoặc size mặc định khác
+            };
+
+        CartService.AddToCart(cartItem);
+    }
+
+    private void NavigateToDetail(int productId)
+    {
+        NavigationManager.NavigateTo($"/chitietsanpham/{productId}");
+    }
+
+    private void OnSearchChanged(ChangeEventArgs e)
+    {
+        searchQuery = e.Value.ToString();
+        FilterProducts();
+    }
+
+    private void FilterProducts()
+    {
+        if (string.IsNullOrWhiteSpace(searchQuery))
+        {
+            filteredProducts = sanPhams;
+        }
+        else
+        {
+            filteredProducts = sanPhams.Where(p => p.TenSP.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+    }
+}
